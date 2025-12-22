@@ -2,19 +2,15 @@
 
 import { useForm } from "react-hook-form";
 
-export default function SignupPage() {
+export default function LoginPage() {
     const {register, handleSubmit, formState:{errors}} = useForm({
-        values : {username:"", email:"", password:"", role:"Citizen"}
+        values : {email:"", password:""}
     });
     return (
         <form onSubmit={handleSubmit(()=>{})}>
             <h1>FixMyTown</h1>
-            <h2>Create an new account!</h2>
-            <div>
-                <label>Username</label>
-                <input {...register("username", {required: "Username is required!", minLength:{value: 3, message:"Minimun required length is 3!"}})}/>
-                <p>{errors.username?.message}</p>
-            </div>
+            <h2>Welcome back!</h2>
+            
             <div>
                 <label>Email</label>
                 <input {...register("email", {required: "Email is required!", pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message:"Invalid email format!"}})}/>
@@ -26,13 +22,7 @@ export default function SignupPage() {
                 maxLength: {value:20, message:"Maximum length is 20!"}})}/>
                 <p>{errors.password?.message}</p>
             </div>
-            <div>
-                <select name="role" id="role">
-                    <option value={"citizen"}>Citizen</option>
-                    <option value={"authority"}>Authority</option>
-                    <p>{errors.role?.message}</p>
-                </select>
-            </div>
+            
             <div>
                 <button type="submit">Sumbit</button>
             </div>
