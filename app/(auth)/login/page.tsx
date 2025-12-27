@@ -1,16 +1,23 @@
 'use client'
 
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { LoginForm, loginSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginPage() {
+    const router = useRouter();
     const {register, handleSubmit, formState:{errors}} = useForm<LoginForm>({
         resolver: zodResolver(loginSchema),
         values : {email:"", password:""}
     });
+
+    const onSubmit = () => {
+        router.push("/dashboard");
+    }
+
     return (
-        <form className="form" onSubmit={handleSubmit(()=>{})}>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <h1 className="text-3xl font-bold text-center mb-6">FixMyTown</h1>
             <h2 className="text-center font-bold mb-4">Welcome back!</h2>
             
