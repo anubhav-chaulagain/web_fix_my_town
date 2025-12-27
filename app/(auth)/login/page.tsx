@@ -10,23 +10,23 @@ export default function LoginPage() {
         values : {email:"", password:""}
     });
     return (
-        <form onSubmit={handleSubmit(()=>{})}>
-            <h1>FixMyTown</h1>
-            <h2>Welcome back!</h2>
+        <form className="form" onSubmit={handleSubmit(()=>{})}>
+            <h1 className="text-3xl font-bold text-center mb-6">FixMyTown</h1>
+            <h2 className="text-center font-bold mb-4">Welcome back!</h2>
             
             <div>
-                <label>Email</label>
-                <input {...register("email")}/>
-                <p>{errors.email?.message}</p>
+                <label className="label">Email</label>
+                <input className="input" {...register("email")}/>
+                <p className="error-text">{errors.email?.message}</p>
             </div>
             <div>
-                <label>Password</label>
-                <input {...register("password")}/>
-                <p>{errors.password?.message}</p>
+                <label className="label">Password</label>
+                <input className="input" {...register("password")}/>
+                <p className="error-text">{errors.password?.message}</p>
             </div>
         
             <div>
-                <button type="submit">Sumbit</button>
+                <button className="form-btn" type="submit">Sumbit</button>
             </div>
         </form>
     );
