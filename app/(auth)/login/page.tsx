@@ -24,7 +24,7 @@ export default function LoginPage() {
                 <input {...register("password")}/>
                 <p>{errors.password?.message}</p>
             </div>
-            
+        
             <div>
                 <button type="submit">Sumbit</button>
             </div>
