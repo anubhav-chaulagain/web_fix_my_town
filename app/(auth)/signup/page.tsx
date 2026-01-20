@@ -12,7 +12,6 @@ export default function SignupPage() {
         resolver: zodResolver(signupSchema),
         values : {
             fullname: "", email: "", password: "", role: "citizen",
-            number: ""
         }
     });
     const onSubmit = () => {
@@ -36,11 +35,6 @@ export default function SignupPage() {
                 <label className="label">Password</label>
                 <input className="input" type="password" {...register("password")}/>
                 <p className="error-text">{errors.password?.message}</p>
-            </div>
-            <div>
-                <label className="label">Number</label>
-                <input className="input" {...register("number")}/>
-                <p className="error-text">{errors.number?.message}</p>
             </div>
             <div>
                 <label className="label">Role</label>
