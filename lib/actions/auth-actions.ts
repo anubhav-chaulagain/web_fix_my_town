@@ -25,9 +25,11 @@ export const handleLogin = async ( formData: any ) => {
     try {
         // how data sent from component to backend api
         const res = await login(formData);
+        console.log("handle login auth action")
         // component return logic
         if (res.success){
             const token = res.token;
+            console.log("Received token", token);
             await setAuthToken(token);
             await setUserData(res.data);
 

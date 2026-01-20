@@ -4,18 +4,33 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { SignupForm, signupSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { handleRegister } from "@/lib/actions/auth-actions";
+import { useState, useTransition } from "react";
 
 
 export default function SignupPage() {
+    const [pending, setTransition] = useTransition()
     const router = useRouter();
+    const [error, setError] = usbeState("");
     const {register, handleSubmit, formState:{errors}} = useForm<SignupForm>({
         resolver: zodResolver(signupSchema),
         values : {
             fullname: "", email: "", password: "", role: "citizen",
         }
     });
-    const onSubmit = () => {
-        router.push("/login");
+    const onSubmit = async (data: SignupForm) => {
+        try {
+            const res = await handleRegister(data);
+            if(!res.success){
+                throw new Error(res.message || "Registration failed");
+            }
+            // handle redirect (optional)
+            setTransition(() => {
+                router.push("/login");
+            });
+        } catch(err:Error | any){
+            setError(err.message || "Registration failed");
+        }
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form">
