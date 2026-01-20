@@ -20,22 +20,22 @@ body {
 
 @layer components {
   .form {
-    @apply w-sm border border-gray-300 rounded-2xl p-6 my-15 mx-auto shadow-lg
-  };
+    @apply w-sm border border-gray-300 rounded-2xl p-6 mt-16 mb-16  mx-auto shadow-lg;
+  }
 
   .label {
     @apply block mb-1 text-sm
-  };
+  }
 
   .input {
-    @apply block border-gray-300 border-2 rounded-lg w-full mb-1 h-[32px] pl-2
-  };
+    @apply block border-gray-300 border-2 rounded-lg w-full mb-1 h-[32px] pl-2;
+  }
 
   .error-text {
-    @apply text-red-500 text-xs mb-4 tracking-wider pl-1
-  };
+    @apply text-red-500 text-xs mb-4 tracking-wider pl-1;
+  }
 
   .form-btn {
-    @apply bg-[#1EA095] w-full text-sm text-white h-[32px] rounded-lg my-2
-  };
+    @apply bg-[#1EA095] w-full text-sm text-white h-[32px] rounded-lg my-2;
+  }
 }

@@ -10,7 +10,10 @@ export default function SignupPage() {
     const router = useRouter();
     const {register, handleSubmit, formState:{errors}} = useForm<SignupForm>({
         resolver: zodResolver(signupSchema),
-        values : {username:"", email:"", password:"", role:"citizen"}
+        values : {
+            fullname: "", email: "", password: "", role: "citizen",
+            number: ""
+        }
     });
     const onSubmit = () => {
         router.push("/login");
@@ -20,9 +23,9 @@ export default function SignupPage() {
             <h1 className="text-3xl font-bold text-center mb-6">FixMyTown</h1>
             <h2 className="text-center font-bold mb-4">Create an new account!</h2>
             <div>
-                <label className="label">Username</label>
-                <input className="input" {...register("username")}/>
-                <p className="error-text">{errors.username?.message}</p>
+                <label className="label">Fullname</label>
+                <input className="input" {...register("fullname")}/>
+                <p className="error-text">{errors.fullname?.message}</p>
             </div>
             <div>
                 <label className="label">Email</label>
@@ -33,6 +36,11 @@ export default function SignupPage() {
                 <label className="label">Password</label>
                 <input className="input" type="password" {...register("password")}/>
                 <p className="error-text">{errors.password?.message}</p>
+            </div>
+            <div>
+                <label className="label">Number</label>
+                <input className="input" {...register("number")}/>
+                <p className="error-text">{errors.number?.message}</p>
             </div>
             <div>
                 <label className="label">Role</label>
