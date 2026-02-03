@@ -11,7 +11,7 @@ import { useState, useTransition } from "react";
 export default function SignupPage() {
     const [pending, setTransition] = useTransition()
     const router = useRouter();
-    const [error, setError] = usbeState("");
+    const [error, setError] = useState("");
     const {register, handleSubmit, formState:{errors}} = useForm<SignupForm>({
         resolver: zodResolver(signupSchema),
         values : {
