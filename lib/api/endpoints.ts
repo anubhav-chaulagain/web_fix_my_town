@@ -6,8 +6,8 @@ export const API = {
         LOGIN: '/api/auth/login',
     },
     ADMIN: {
-        CREATE: "api/admin/users",
-        GETALL: "api/admin/users",
-        UPDATE: (email: string) => `api/admin/users/${email}`
+        CREATE: "/api/admin/users",
+        GETALL: "/api/admin/users",
+        UPDATE: (email: string) => `/api/admin/users/${email}`
     }
 }

@@ -1,5 +1,6 @@
+"use client"
 import { clearAuthCookies, getAuthToken, getUserData } from "@/lib/cookie";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 interface AuthContextProps {
