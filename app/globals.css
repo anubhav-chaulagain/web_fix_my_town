@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color:#1EA095;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +37,6 @@ body {
   }
 
   .form-btn {
-    @apply bg-[#1EA095] w-full text-sm text-white h-[32px] rounded-lg my-2;
+    @apply bg-[#1EA095] w-full text-sm text-white h-8 rounded-lg my-2;
   }
 }
