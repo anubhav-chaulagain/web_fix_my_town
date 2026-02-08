@@ -6,6 +6,7 @@ import { LoginForm, loginSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { handleLogin } from "@/lib/actions/auth-actions";
+import Link from "next/link";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -54,6 +55,9 @@ export default function LoginPage() {
         
             <div>
                 <button className="form-btn" type="submit">Sumbit</button>
+            </div>
+            <div className="text-center mb-3">
+                <Link href={"/login"} className="text-slate-500 text-sm"></Link>
             </div>
         </form>
     );

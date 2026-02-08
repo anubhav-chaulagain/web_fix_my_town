@@ -6,6 +6,7 @@ import { SignupForm, signupSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { handleRegister } from "@/lib/actions/auth-actions";
 import { useState, useTransition } from "react";
+import Link from "next/link";
 
 
 export default function SignupPage() {
@@ -63,6 +64,10 @@ export default function SignupPage() {
             <div>
                 <button className="form-btn" type="submit">Signup</button>
             </div>
+            <div className="text-center mb-3">
+                <Link href={"/login"} className="text-slate-500 text-sm">Already have an account?</Link>
+            </div>
+            
         </form>
     );
 }
