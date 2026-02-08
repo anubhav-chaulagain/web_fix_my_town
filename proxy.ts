@@ -43,6 +43,6 @@ export const config = {
         "/admin/:path*",
         "/user/:path*",
         "/login",
-        "/register"
+        "/signup"
     ],
 }
