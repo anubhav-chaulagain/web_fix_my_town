@@ -57,7 +57,7 @@ export default function LoginPage() {
                 <button className="form-btn" type="submit">Sumbit</button>
             </div>
             <div className="text-center mb-3">
-                <Link href={"/login"} className="text-slate-500 text-sm"></Link>
+                <Link href={"/signup"} className="text-slate-500 text-sm">Create a new account</Link>
             </div>
         </form>
     );
