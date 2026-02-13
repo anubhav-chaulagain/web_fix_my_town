@@ -2,6 +2,7 @@
 import Image from "next/image";
 import {Card, Input, Button } from "../_components/Shared";
 import { useAuth } from "@/app/context/AuthContext";
+import { HelpCircle } from "lucide-react";
 
 export default function Page() {
     const { user, logout } = useAuth();
@@ -35,13 +36,20 @@ export default function Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input label="Full Name" value={user?.fullname} />
-            <Input label="Email Address" value={user?.email} />
+            <Input label="Full Name" value={user?.fullname} isDisabled={false}/>
+            <Input label="Email Address" value={user?.email} isDisabled={true} />
             
           </div>
 
           <div className="mt-8 pt-8 border-t border-slate-100 flex justify-between items-center">
-             <button onClick={logout} className="text-rose-600 font-bold text-sm hover:underline">Log out from all devices</button>
+             <div className="flex sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6">
+                <div className="flex items-center space-x-2 text-teal-600 hover:text-teal-700 cursor-pointer">
+                  <HelpCircle size={18} className="" />
+                  < span>Forgot Password</span>
+                </div>
+                <button onClick={logout} className="text-rose-600 font-bold text-sm hover:underline cursor-pointer">Log out from all devices</button>
+             </div>
+             
              <div className="flex space-x-3">
                <Button variant="outline">Discard Changes</Button>
                <Button>Save Settings</Button>

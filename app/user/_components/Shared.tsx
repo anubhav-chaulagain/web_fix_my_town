@@ -1,4 +1,4 @@
-export const Input: React.FC<{ label: string; placeholder?: string; type?: string; value?: string; onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void; multiline?: boolean; options?: {label: string, value: string}[] }> = ({ label, placeholder, type = 'text', multiline, options, value, onChange }) => (
+export const Input: React.FC<{ isDisabled: boolean; label: string; placeholder?: string; type?: string; value?: string; onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void; multiline?: boolean; options?: {label: string, value: string}[] }> = ({isDisabled, label, placeholder, type = 'text', multiline, options, value, onChange }) => (
   <div className="space-y-1.5">
     <label className="text-sm font-medium text-slate-700">{label}</label>
     {options ? (
@@ -24,6 +24,7 @@ export const Input: React.FC<{ label: string; placeholder?: string; type?: strin
         className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
         value={value}
         onChange={onChange}
+        disabled={isDisabled}
       />
     )}
   </div>
