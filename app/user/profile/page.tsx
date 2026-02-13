@@ -36,8 +36,8 @@ export default function Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input label="Full Name" value={user?.fullname} isDisabled={false}/>
-            <Input label="Email Address" value={user?.email} isDisabled={true} />
+            <Input label="Full Name" value={user.fullname} isDisabled={false}/>
+            <Input label="Email Address" value={user.email} isDisabled={true} />
             
           </div>
 

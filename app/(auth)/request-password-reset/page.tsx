@@ -35,7 +35,7 @@ export default function Page() {
                 <p className="error-text">{errors.email?.message}</p>
             </div>
             <div>
-                <button className="form-btn" type="submit">Request</button>
+                <button className="form-btn" type="submit" disabled={isSubmitting}>Send Reset Link</button>
             </div>
         </form>
     );
