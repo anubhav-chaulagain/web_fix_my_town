@@ -31,7 +31,7 @@ export default function LoginPage() {
             // setTransition(()=>{
             //     router.push("/dashboard");
             // });
-            router.push("/dashboard");
+            router.push("/user/dashboard");
         } catch(err: Error|any){
             setError(err.message || "Login failed");
         }

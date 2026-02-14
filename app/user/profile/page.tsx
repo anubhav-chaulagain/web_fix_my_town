@@ -3,9 +3,16 @@ import Image from "next/image";
 import {Card, Input, Button } from "../_components/Shared";
 import { useAuth } from "@/app/context/AuthContext";
 import { HelpCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+    const router = useRouter();
     const { user, logout } = useAuth();
+    console.log("USER: ",user);
+    const handleLogout = () => {
+      logout();
+      router.replace('/');
+    }
     // const imageUrl = user?.profilePicture?`http://localhost:5050/uploads/${user?.profilePicture}`:"/images/garbage.png";
     console.log(user)
     return (
@@ -36,8 +43,23 @@ export default function Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input label="Full Name" value={user.fullname} isDisabled={false}/>
-            <Input label="Email Address" value={user.email} isDisabled={true} />
+            {/* <Input label="Full Name" value={user.fullname} isDisabled={false}/>
+            <Input label="Email Address" value={user.email} isDisabled={true} /> */}
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium text-slate-700">Full Name</label>
+              <input 
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
+                value={user.fullname} onChange={()=>{}}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium text-slate-700">Email</label>
+              <input 
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
+                value={user.email} readOnly
+              />
+            </div>
+            
             
           </div>
 
@@ -47,7 +69,7 @@ export default function Page() {
                   <HelpCircle size={18} className="" />
                   < span>Forgot Password</span>
                 </div>
-                <button onClick={logout} className="text-rose-600 font-bold text-sm hover:underline cursor-pointer">Log out from all devices</button>
+                <button onClick={handleLogout} className="text-rose-600 font-bold text-sm hover:underline cursor-pointer">Log out from all devices</button>
              </div>
              
              <div className="flex space-x-3">

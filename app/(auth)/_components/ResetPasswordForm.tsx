@@ -18,7 +18,7 @@ export default function ResetPasswordForm({
     const router = useRouter();
     const onSubmit = async (data: ResetPasswordDTO) => {
         try {
-            const response = await handleResetPassword(token, data.password);
+            const response = await handleResetPassword(token, data.newPassword);
             if (response.success) {
                 toast.success("Password reset successfully");
                 // Redirect to login page
@@ -42,11 +42,11 @@ export default function ResetPasswordForm({
                 </label>
                 <input
                     type="password"
-                    {...register("password")}
+                    {...register("newPassword")}
                     className="input"
                 />
-                {errors.password && (
-                    <p className="error-text">{errors.password.message}</p>
+                {errors.newPassword && (
+                    <p className="error-text">{errors.newPassword.message}</p>
                 )}
             </div>
             <div>
