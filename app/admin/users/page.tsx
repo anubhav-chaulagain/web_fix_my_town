@@ -18,6 +18,8 @@ export default async function Page({
         search as string
     );
 
+    console.log(response)
+
     if (!response.success) {
         throw new Error(response.message || 'Failed to load users');
     }
