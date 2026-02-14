@@ -1,18 +1,11 @@
 "use client"
 import Image from "next/image";
-import {Card, Input, Button } from "../_components/Shared";
+import {Card, Button } from "../_components/Shared";
 import { useAuth } from "@/app/context/AuthContext";
 import { HelpCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 export default function Page() {
-    const router = useRouter();
     const { user, logout } = useAuth();
-    console.log("USER: ",user);
-    const handleLogout = () => {
-      logout();
-      router.replace('/');
-    }
     // const imageUrl = user?.profilePicture?`http://localhost:5050/uploads/${user?.profilePicture}`:"/images/garbage.png";
     console.log(user)
     return (
@@ -69,7 +62,7 @@ export default function Page() {
                   <HelpCircle size={18} className="" />
                   < span>Forgot Password</span>
                 </div>
-                <button onClick={handleLogout} className="text-rose-600 font-bold text-sm hover:underline cursor-pointer">Log out from all devices</button>
+                <button onClick={logout} className="text-rose-600 font-bold text-sm hover:underline cursor-pointer">Log out from all devices</button>
              </div>
              
              <div className="flex space-x-3">

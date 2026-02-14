@@ -10,6 +10,8 @@ export const API = {
     ADMIN: {
         CREATE: "/api/admin/users",
         GETALL: "/api/admin/users",
-        UPDATE: (email: string) => `/api/admin/users/${email}`
+        GET_ONE: (userId: string) => `/api/admin/users/${userId}`,
+        UPDATE: (email: string) => `/api/admin/users/${email}`,
+        DELETE: (userId: string) => `/api/admin/users/${userId}`,
     }
 }
