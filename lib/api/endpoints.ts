@@ -13,5 +13,12 @@ export const API = {
         GET_ONE: (userId: string) => `/api/admin/users/${userId}`,
         UPDATE: (email: string) => `/api/admin/users/${email}`,
         DELETE: (userId: string) => `/api/admin/users/${userId}`,
-    }
+    },
+    ISSUES: {
+        CREATE: '/api/issues',
+        GETALL: '/api/issues',
+        GET_ONE: (issueId: string) => `/api/issues/${issueId}`,
+        UPDATE: (issueId: string) => `/api/issues/${issueId}`,
+        DELETE: (issueId: string) => `/api/issues/${issueId}`,
+    },
 }
