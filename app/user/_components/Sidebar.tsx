@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 const USER_LINKS = [
     { href: "/user/dashboard", label: "Dashboard", Icon: Icons.Dashboard},
-    { href: "/user/report", label: "Report Issue", Icon: Icons.Report},
+    { href: "/user/reportIssue", label: "Report Issue", Icon: Icons.Report},
     { href: "/user/reports", label: "Reports", Icon: Icons.MyReports},
     { href: "/user/notification", label: "Notification", Icon: Icons.Notifications},
     { href: "/user/profile", label: "Profile", Icon: Icons.Profile},
@@ -16,7 +16,7 @@ const USER_LINKS = [
 export default function Sidebar() {
     const pathname = usePathname();
     return (
-        <aside className="fixed md:static top-0 left-0 h-screen w-64 bg-white border-r border-gray-200 overflow-y-auto">
+        <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-200 overflow-y-auto z-40">
             <div className="p-4">
                 <Image src={"/logo.svg"} width={200} height={200} alt="Logo FixMyTown" />
             </div>

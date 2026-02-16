@@ -5,11 +5,33 @@ import { useAuth } from "@/app/context/AuthContext";
 import { HelpCircle } from "lucide-react";
 
 export default function Page() {
-    const { user, logout } = useAuth();
+    const { user, logout, loading } = useAuth();
     // const imageUrl = user?.profilePicture?`http://localhost:5050/uploads/${user?.profilePicture}`:"/images/garbage.png";
-    console.log(user)
+    
+    // Show loading state while checking auth
+    if (loading) {
+        return (
+            <section className="space-y-8 max-w-4xl mx-auto mt-8 mb-16">
+                <div className="animate-pulse">
+                    <div className="h-8 bg-slate-200 rounded w-1/3 mb-2"></div>
+                    <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+                </div>
+            </section>
+        );
+    }
+
+    if (!user) {
+        return (
+            <section className="max-w-4xl mx-auto mt-8 mb-16">
+                <Card>
+                    <p className="text-center text-slate-600">NO user.</p>
+                </Card>
+            </section>
+        );
+    }
+
     return (
-        <section className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto mt-8 mb-16">
+        <section className="space-y-8 animate-in fade-in duration-500 max-w-4xl flex justify-end mt-8 mb-16">
             <div>
               <h2 className="text-3xl font-bold text-slate-900">Your Profile</h2>
               <p className="text-slate-500 mt-1">Manage your personal information and application preferences.</p>

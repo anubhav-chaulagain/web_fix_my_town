@@ -5,9 +5,6 @@ export const setAuthToken = async (token: string) => {
     cookieStore.set({
         name: "auth_token", 
         value: token,
-        httpOnly: true,
-        sameSite: "lax",
-        maxAge: 60 * 60 * 24 * 7 // 7 days
     });
 }
 export const getAuthToken = async () => {
@@ -19,9 +16,7 @@ export const setUserData = async (userData: any) => {
     // cookie can only store string values
     cookieStore.set({name: "user_data", 
         value: JSON.stringify(userData),
-        httpOnly: true,
-        sameSite: "lax",
-        maxAge: 60 * 60 * 24 * 7 // 7 days
+        httpOnly: false,
     });
 }
 export const getUserData = async () => {
