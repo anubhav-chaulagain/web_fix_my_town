@@ -7,6 +7,7 @@ import { setAuthToken, setUserData } from "../cookie";
 export const handleRegister = async ( formData: any ) => {
     try {
         // how data sent from component to backend api
+        console.log("login auth action");
         const res = await register(formData);
         // component return logic
         if (res.success){

@@ -18,7 +18,6 @@ export default function LoginPage() {
 
     const [error, setError] = useState("");
     const onSubmit = async (data: LoginForm) => {
-        console.log("front end ko onsubmit")
         // call action here
         setError("");
         try {
