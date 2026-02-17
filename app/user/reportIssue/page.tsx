@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef, useState, useTransition } from "react";
@@ -12,6 +11,8 @@ import { Icons } from "../constants";
 import Image from "next/image";
 import { X, MapPin } from "lucide-react";
 import dynamic from 'next/dynamic';
+import { useRouter } from "next/navigation";
+import { handleCreateIssue } from "@/lib/actions/issue-actions";
 
 // Dynamic import to avoid SSR issues with Leaflet
 const MapPicker = dynamic(() => import('../_components/MapPicker'), {
@@ -24,6 +25,7 @@ const MapPicker = dynamic(() => import('../_components/MapPicker'), {
 });
 
 export default function SignupPage() {
+    const router = useRouter();
     const [error, setError] = useState("");
     const [previewImages, setPreviewImages] = useState<string[]>([]);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -88,44 +90,44 @@ export default function SignupPage() {
     };
 
     const onSubmit = async (data: ReportIssueForm) => {
+        event?.preventDefault();
         try {
-                const formData = new FormData();
-                if (data.title) {
-                    formData.append('title', data.title);
-                }
+            const formData = new FormData();
+            
+            // Required fields
+            formData.append('title', data.title);
+            formData.append('category', data.category);
+            formData.append('location', data.location);
+            formData.append('description', data.description);
 
-                formData.append('category', data.category);
-                formData.append('location', data.location);
-                formData.append('description', data.description);
-
-                // Add coordinates if selected
-                if (coordinates) {
-                    formData.append('latitude', coordinates.lat.toString());
-                    formData.append('longitude', coordinates.lng.toString());
-                }
-
-                selectedFiles.forEach((file) => {
-                    formData.append('issueImages', file);
-                });
-
-                for (const [key, value] of formData.entries()) {
-                    console.log(key, value);
-                }
-
-
-                // const response = await handleCreateUser(formData);
-                // if (!response.success) {
-                //     throw new Error(response.message || 'Report submission failed');
-                // }
-                // reset();
-                // handleDismissAllImages();
-                // setCoordinates(null);
-                // toast.success('Issue reported successfully');
-
-            } catch (error: Error | any) {
-                // toast.error(error.message || 'Report submission failed');
-                // setError(error.message || 'Report submission failed');
+            // Optional: Coordinates if selected from map
+            if (coordinates) {
+                formData.append('latitude', coordinates.lat.toString());
+                formData.append('longitude', coordinates.lng.toString());
             }
+
+            // Optional: Multiple images (max 5)
+            selectedFiles.forEach((file) => {
+                formData.append('issueImages', file);
+            });
+
+            // Call the server action (this should call your backend API)
+            const response = await handleCreateIssue(formData);
+
+            if (!response.success) {
+                throw new Error(response.message || 'Failed to report issue');
+            }
+
+            reset();
+            handleDismissAllImages();
+            setCoordinates(null);
+            setShowMap(false);
+            toast.success(response.message || 'Issue reported successfully');
+            router.push('/user/reports');
+
+        } catch (error: Error | any) {
+            toast.error(error.message || 'Failed to report issue');
+        }
     }
 
     return (
@@ -282,11 +284,11 @@ export default function SignupPage() {
                     </Card>
 
                     <div className="flex justify-end space-x-4">
-                        <Button variant="outline" onClick={() => {
+                        <Button variant="outline" type="button" onClick={() => {
                             reset();
                             handleDismissAllImages();
                             setCoordinates(null);
-                            setShowMap(false);
+                            setShowMap(false);                           
                         }}>Cancel</Button>
                         <button 
                             className="px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 text-sm text-white bg-[#1EA095]" 

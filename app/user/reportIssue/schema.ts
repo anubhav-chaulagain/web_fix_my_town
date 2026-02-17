@@ -4,10 +4,10 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
 
 export const reportIssueSchema = z.object({
-    title: z.string().min(6, "Title must be clear!"),
+    title: z.string().min(5, "Title must be at least 5 characters").max(100, "Title is too long"),
     category: z.string(),
-    location: z.string().min(6, "Location must be clear!"),
-    description: z.string().min(10, "Describe the issue clearly!"),
+    location: z.string().min(5, "Location must be at least 5 characters").max(200, "Location is too long"),
+    description: z.string().min(10, "Description must be at least 10 characters").max(1000, "Description is too long"),
     issueImages: z
             .instanceof(File)
             .optional()
