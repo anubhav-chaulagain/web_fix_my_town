@@ -41,3 +41,12 @@ export const Icons = {
   )
 };
 
+export type IssueStatus = 'pending' | 'in-progress' | 'resolved' | 'rejected';
+
+export const ISSUE_STATUS = {
+  PENDING: 'pending',
+  IN_PROGRESS: 'in-progress',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+} as const;
+

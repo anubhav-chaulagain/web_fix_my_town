@@ -6,6 +6,7 @@ export const API = {
         LOGIN: '/api/auth/login',
         REQUEST_PASSWORD_RESET: '/api/auth/request-password-reset',
         RESET_PASSWORD: (token: string) => `/api/auth/reset-password/${token}`,
+        REPORT_STATS: '/api/auth/report-stats',
     },
     ADMIN: {
         CREATE: "/api/admin/users",
@@ -20,5 +21,6 @@ export const API = {
         GET_ONE: (issueId: string) => `/api/issues/${issueId}`,
         UPDATE: (issueId: string) => `/api/issues/${issueId}`,
         DELETE: (issueId: string) => `/api/issues/${issueId}`,
+        GET_MY_RECENT: '/api/issues/my-recent',
     },
 }

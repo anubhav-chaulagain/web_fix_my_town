@@ -113,3 +113,12 @@ export const getUserIssues = async(userId?: string) => {
         )
     }
 }
+
+export const getMyRecentIssues = async () => {
+    try {
+        const response = await axios.get(API.ISSUES.GET_MY_RECENT);
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(err.response?.data?.message || err.message || "Failed to fetch recent issues");
+    }
+}

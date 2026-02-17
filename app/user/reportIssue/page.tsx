@@ -1,9 +1,8 @@
 'use client'
 
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState, useTransition } from "react";
-import { handleCreateUser } from "@/lib/actions/admin/user-action";
+import {  useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { ReportIssueForm, reportIssueSchema } from "./schema";
 import { Button, Card } from "../_components/Shared";
@@ -123,7 +122,7 @@ export default function SignupPage() {
             setCoordinates(null);
             setShowMap(false);
             toast.success(response.message || 'Issue reported successfully');
-            router.push('/user/reports');
+            router.push('/user/dashboard');
 
         } catch (error: Error | any) {
             toast.error(error.message || 'Failed to report issue');

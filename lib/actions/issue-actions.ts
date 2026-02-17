@@ -7,7 +7,8 @@ import {
     updateIssue, 
     deleteIssue,
     updateIssueStatus,
-    getUserIssues 
+    getUserIssues, 
+    getMyRecentIssues
 } from "../api/issue";
 
 export const handleCreateIssue = async (formData: FormData) => {
@@ -138,5 +139,17 @@ export const handleGetUserIssues = async (userId?: string) => {
         return { success: false, message: res.message || "Failed to fetch user issues" };
     } catch (err: Error | any) {
         return { success: false, message: err.message || "Failed to fetch user issues" };
+    }
+}
+
+export const handleGetMyRecentIssues = async () => {
+    try {
+        const res = await getMyRecentIssues();
+        if (res.success) {
+            return { success: true, data: res.data, message: res.message };
+        }
+        return { success: false, data: null, message: res.message || "Failed to fetch recent issues" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to fetch recent issues" };
     }
 }

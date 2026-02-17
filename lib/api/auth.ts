@@ -48,3 +48,12 @@ export const resetPassword = async (token: string, newPassword: string) => {
     }
 }
 
+export const fetchReportStats = async () => {
+    try {
+        const response = await axios.get(API.AUTH.REPORT_STATS);
+        return response.data; // Assuming backend returns stats in response body
+    } catch (error: Error | any) {
+        throw new Error(error.response?.data?.message || error.message || 'Failed to fetch report stats');
+    }  
+};
+

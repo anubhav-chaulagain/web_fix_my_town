@@ -1,6 +1,6 @@
 // server side processing
 'use server'
-import { register, login, requestPasswordReset, resetPassword } from "../api/auth";
+import { register, login, requestPasswordReset, resetPassword, fetchReportStats } from "../api/auth";
 import { setAuthToken, setUserData } from "../cookie";
 
 export const handleRegister = async ( formData: any ) => {
@@ -73,3 +73,19 @@ export const handleResetPassword = async (token: string, newPassword: string) =>
         return { success: false, message: error.message || 'Reset password action failed' }
     }
 };
+
+export const handleFetchReportStats = async () => {
+    try {
+        const response = await fetchReportStats();
+        if (response.success) {
+            return {
+                success: true,
+                data: response.data,
+                message: 'Report stats fetched successfully'
+            }
+        }
+        return { success: false, message: response.message || 'Failed to fetch report stats' }
+    } catch (error: Error | any) {
+        return { success: false, message: error.message || 'Failed to fetch report stats' }
+    }
+}

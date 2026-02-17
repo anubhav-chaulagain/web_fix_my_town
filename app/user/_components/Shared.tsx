@@ -1,3 +1,5 @@
+import { IssueStatus } from "../constants";
+
 export const Input: React.FC<{ isDisabled: boolean; label: string; placeholder?: string; type?: string; value?: string; onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void; multiline?: boolean; options?: {label: string, value: string}[] }> = ({isDisabled, label, placeholder, type = 'text', multiline, options, value, onChange }) => (
   <div className="space-y-1.5">
     <label className="text-sm font-medium text-slate-700">{label}</label>
@@ -29,6 +31,27 @@ export const Input: React.FC<{ isDisabled: boolean; label: string; placeholder?:
     )}
   </div>
 );
+
+export const StatusBadge: React.FC<{ status: IssueStatus }> = ({ status }) => {
+  const styles: Record<IssueStatus, string> = {
+    'pending': 'bg-amber-50 text-amber-700 border-amber-200',
+    'in-progress': 'bg-blue-50 text-blue-700 border-blue-200',
+    'resolved': 'bg-teal-50 text-teal-700 border-teal-200',
+    'rejected': 'bg-rose-50 text-rose-700 border-rose-200',
+  };
+
+  // Convert 'in-progress' to 'In Progress', 'pending' to 'Pending', etc.
+  const displayText = status
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  return (
+    <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${styles[status]}`}>
+      {displayText}
+    </span>
+  );
+};
 
 export const Card: React.FC<{ title?: string; children: React.ReactNode; className?: string }> = ({ title, children, className = '' }) => (
   <div className={` rounded-xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
