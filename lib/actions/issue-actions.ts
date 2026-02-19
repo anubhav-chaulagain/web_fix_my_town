@@ -8,7 +8,10 @@ import {
     deleteIssue,
     updateIssueStatus,
     getUserIssues, 
-    getMyRecentIssues
+    getMyRecentIssues,
+    updateIssueStatusOnly,
+    resolveIssue,
+    assignIssue
 } from "../api/issue";
 
 export const handleCreateIssue = async (formData: FormData) => {
@@ -151,5 +154,53 @@ export const handleGetMyRecentIssues = async () => {
         return { success: false, data: null, message: res.message || "Failed to fetch recent issues" };
     } catch (err: Error | any) {
         return { success: false, data: null, message: err.message || "Failed to fetch recent issues" };
+    }
+}
+
+export const handleAssignIssue = async (issueId: string, assignedTo: string, priority?: string) => {
+    try {
+        const res = await assignIssue(issueId, assignedTo, priority);
+        if (res.success) {
+            return {
+                success: true,
+                data: res.data,
+                message: "Issue assigned successfully"
+            };
+        }
+        return { success: false, data: null, message: res.message || "Failed to assign issue" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to assign issue" };
+    }
+}
+
+export const handleResolveIssue = async (issueId: string, remarks?: string) => {
+    try {
+        const res = await resolveIssue(issueId, remarks);
+        if (res.success) {
+            return {
+                success: true,
+                data: res.data,
+                message: "Issue resolved successfully"
+            };
+        }
+        return { success: false, data: null, message: res.message || "Failed to resolve issue" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to resolve issue" };
+    }
+}
+
+export const handleUpdateIssueStatusOnly = async (issueId: string, status: string, remarks?: string) => {
+    try {
+        const res = await updateIssueStatusOnly(issueId, status, remarks);
+        if (res.success) {
+            return {
+                success: true,
+                data: res.data,
+                message: "Issue status updated successfully"
+            };
+        }
+        return { success: false, data: null, message: res.message || "Failed to update status" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to update status" };
     }
 }

@@ -122,3 +122,52 @@ export const getMyRecentIssues = async () => {
         throw new Error(err.response?.data?.message || err.message || "Failed to fetch recent issues");
     }
 }
+
+// Add these to the existing file
+
+export const assignIssue = async(issueId: string, assignedTo: string, priority?: string) => {
+    try {
+        const response = await axios.patch(API.ISSUES.ASSIGN(issueId), { 
+            assignedTo, 
+            priority 
+        });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to assign issue"
+        )
+    }
+}
+
+export const resolveIssue = async(issueId: string, remarks?: string) => {
+    try {
+        const response = await axios.patch(API.ISSUES.RESOLVE(issueId), { 
+            remarks 
+        });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to resolve issue"
+        )
+    }
+}
+
+export const updateIssueStatusOnly = async(issueId: string, status: string, remarks?: string) => {
+    try {
+        const response = await axios.patch(API.ISSUES.UPDATE_STATUS(issueId), { 
+            status,
+            remarks 
+        });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to update issue status"
+        )
+    }
+}
