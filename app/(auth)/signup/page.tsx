@@ -54,10 +54,10 @@ export default function SignupPage() {
             </div>
             <div>
                 <label className="label">Role</label>
-                <select className="input text-sm" name="role" id="role">
+                <select className="input text-sm" id="role" {...register("role")}>
                     <option value="citizen">Citizen</option>
-                    <option value="authority">Authority</option>
                 </select>
+                <p className="text-slate-600 text-xs mb-4 tracking-wider pl-1">Please contact an administrator to request access to other roles.</p>
                 <p className="error-text">{errors.role?.message}</p>
 
             </div>
