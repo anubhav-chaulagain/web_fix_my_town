@@ -57,3 +57,12 @@ export const fetchReportStats = async () => {
     }  
 };
 
+export const fetchAuthorityStats = async () => {
+    try {
+        const response = await axios.get(API.AUTH.AUTHORITY_STATS);
+        return response.data;
+    } catch (error: Error | any) {
+        throw new Error(error.response?.data?.message || error.message || 'Failed to fetch authority stats');
+    }
+}
+

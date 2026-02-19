@@ -1,6 +1,6 @@
 // server side processing
 'use server'
-import { register, login, requestPasswordReset, resetPassword, fetchReportStats } from "../api/auth";
+import { register, login, requestPasswordReset, resetPassword, fetchReportStats, fetchAuthorityStats } from "../api/auth";
 import { setAuthToken, setUserData } from "../cookie";
 
 export const handleRegister = async ( formData: any ) => {
@@ -87,5 +87,21 @@ export const handleFetchReportStats = async () => {
         return { success: false, message: response.message || 'Failed to fetch report stats' }
     } catch (error: Error | any) {
         return { success: false, message: error.message || 'Failed to fetch report stats' }
+    }
+}
+
+export const handleFetchAuthorityStats = async () => {
+    try {
+        const response = await fetchAuthorityStats();
+        if (response.success) {
+            return {
+                success: true,
+                data: response.data,
+                message: 'Authority stats fetched successfully'
+            }
+        }
+        return { success: false, data: null, message: response.message || 'Failed to fetch authority stats' }
+    } catch (error: Error | any) {
+        return { success: false, data: null, message: error.message || 'Failed to fetch authority stats' }
     }
 }
