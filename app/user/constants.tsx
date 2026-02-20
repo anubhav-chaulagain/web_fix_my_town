@@ -50,3 +50,29 @@ export const ISSUE_STATUS = {
   REJECTED: 'rejected',
 } as const;
 
+export interface Issue {
+    _id: string;
+    title: string;
+    description: string;
+    category: 'Pothole' | 'Broken Streetlight' | 'Garbage' | 'Water Leakage' | 'Other';
+    location: string;
+    latitude?: number;
+    longitude?: number;
+    status: 'pending' | 'in-progress' | 'resolved' | 'rejected';
+    priority: 'low' | 'medium' | 'high' | 'urgent';
+    createdAt: string;
+    issueImages?: string[];
+    remarks?: string;
+    resolvedAt?: string;
+    reportedBy: {
+        _id: string;
+        fullname: string;
+        email: string;
+    };
+    assignedTo?: {
+        _id: string;
+        fullname: string;
+        department: string;
+        employeeId: string;
+    };
+}

@@ -1,35 +1,43 @@
 import { IssueStatus } from "../constants";
 
-export const Input: React.FC<{ isDisabled: boolean; label: string; placeholder?: string; type?: string; value?: string; onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void; multiline?: boolean; options?: {label: string, value: string}[] }> = ({isDisabled, label, placeholder, type = 'text', multiline, options, value, onChange }) => (
-  <div className="space-y-1.5">
-    <label className="text-sm font-medium text-slate-700">{label}</label>
-    {options ? (
-      <select 
-        className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
-        value={value}
-        onChange={onChange}
-      >
-        {options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
-      </select>
-    ) : multiline ? (
-      <textarea 
-        rows={4}
-        placeholder={placeholder}
-        className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
-        value={value}
-        onChange={onChange}
-      />
-    ) : (
-      <input 
-        type={type}
-        placeholder={placeholder}
-        className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
-        value={value}
-        onChange={onChange}
-        disabled={isDisabled}
-      />
-    )}
-  </div>
+export const Input: React.FC<{
+    isDisabled?: boolean;
+    label: string;
+    placeholder?: string;
+    type?: string;
+    value?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+    multiline?: boolean;
+    options?: { label: string; value: string }[];
+}> = ({ isDisabled, label, placeholder, type = 'text', multiline, options, value, onChange }) => (
+    <div className="space-y-1.5">
+        <label className="text-sm font-medium text-slate-700">{label}</label>
+        {options ? (
+            <select
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
+                {...(onChange ? { value, onChange } : { defaultValue: value })}
+            >
+                {options.map(opt => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+            </select>
+        ) : multiline ? (
+            <textarea
+                rows={4}
+                placeholder={placeholder}
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
+                {...(onChange ? { value, onChange } : { defaultValue: value })}
+            />
+        ) : (
+            <input
+                type={type}
+                placeholder={placeholder}
+                disabled={isDisabled}
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all text-slate-700"
+                {...(onChange ? { value, onChange } : { defaultValue: value })}
+            />
+        )}
+    </div>
 );
 
 type Priority = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"

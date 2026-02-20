@@ -29,14 +29,4 @@ export const API = {
         ASSIGN: (issueId: string) => `/api/issues/${issueId}/assign`,
         RESOLVE: (issueId: string) => `/api/issues/${issueId}/resolve`,
     },
-     CREWS: {
-        CREATE: '/api/crews',
-        GETALL: '/api/crews',
-        GET_AVAILABLE: '/api/crews/available',
-        GET_ONE: (crewId: string) => `/api/crews/${crewId}`,
-        UPDATE: (crewId: string) => `/api/crews/${crewId}`,
-        DELETE: (crewId: string) => `/api/crews/${crewId}`,
-        ASSIGN: (crewId: string) => `/api/crews/${crewId}/assign`,
-        RELEASE: (crewId: string) => `/api/crews/${crewId}/release`,
-    },
 }
