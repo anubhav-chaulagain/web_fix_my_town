@@ -3,17 +3,23 @@ import Link from "next/link";
 import { Icons } from "../constants";
 
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext";
 
 const USER_LINKS = [
     { href: "/user/dashboard", label: "Dashboard", Icon: Icons.Dashboard},
     { href: "/user/reportIssue", label: "Report Issue", Icon: Icons.Report},
     { href: "/user/reports", label: "Reports", Icon: Icons.MyReports},
-    { href: "/user/notification", label: "Notification", Icon: Icons.Notifications},
     { href: "/user/profile", label: "Profile", Icon: Icons.Profile},
 ]
 
 export default function Sidebar() {
+    const { user } = useAuth();
     const pathname = usePathname();
+
+    const visibleLinks = USER_LINKS.filter(link =>
+        !(link.href === "/user/reportIssue" && user?.role === "authority")
+    );
+
     return (
         <aside className="fixed top-0 left-0 h-screen w-64 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 overflow-y-auto z-40 shadow-2xl">
     {/* Logo Section */}
@@ -31,7 +37,7 @@ export default function Sidebar() {
 
     {/* Navigation Links */}
     <nav className="p-4 space-y-2">
-        {USER_LINKS.map(link => {
+        {visibleLinks.map(link => {
             const isActive = link.href === pathname;
             return (
                 <Link 
