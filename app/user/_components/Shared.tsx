@@ -32,6 +32,23 @@ export const Input: React.FC<{ isDisabled: boolean; label: string; placeholder?:
   </div>
 );
 
+type Priority = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"
+
+export const PriorityBadge: React.FC<{ priority: Priority }> = ({ priority }) => {
+  const styles = {
+    LOW: 'text-slate-500 bg-slate-50',
+    MEDIUM: 'text-blue-600 bg-blue-50',
+    HIGH: 'text-orange-600 bg-orange-50',
+    CRITICAL: 'text-red-700 bg-red-100 animate-pulse',
+  };
+
+  return (
+    <span className={`px-2 py-0.5 text-[9px] font-black uppercase tracking-tighter rounded border border-transparent ${styles[priority]}`}>
+      {priority}
+    </span>
+  );
+};
+
 export const StatusBadge: React.FC<{ status: IssueStatus }> = ({ status }) => {
   const styles: Record<IssueStatus, string> = {
     'pending': 'bg-amber-50 text-amber-700 border-amber-200',

@@ -23,6 +23,7 @@ export const API = {
         UPDATE: (issueId: string) => `/api/issues/${issueId}`,
         DELETE: (issueId: string) => `/api/issues/${issueId}`,
         GET_MY_RECENT: '/api/issues/my-recent',
+        GET_MY_ASSIGNED: '/api/issues/my-assigned',
         // Authority routes
         UPDATE_STATUS: (issueId: string) => `/api/issues/${issueId}/status`,
         ASSIGN: (issueId: string) => `/api/issues/${issueId}/assign`,

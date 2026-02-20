@@ -22,6 +22,7 @@ export const createIssue = async(issueData: FormData) => {
 
 export const getAllIssues = async(params?: {
     status?: string;
+    size?: string;
     category?: string;
     page?: number;
     limit?: number;
@@ -168,6 +169,26 @@ export const updateIssueStatusOnly = async(issueId: string, status: string, rema
             err.response?.data?.message
             || err.message
             || "Failed to update issue status"
+        )
+    }
+}
+
+export const getMyAssignedIssues = async(params?: {
+    status?: string;
+    category?: string;
+    priority?: string;
+    search?: string;
+    page?: number;
+    size?: string;
+}) => {
+    try {
+        const response = await axios.get(API.ISSUES.GET_MY_ASSIGNED, { params });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to fetch assigned issues"
         )
     }
 }
