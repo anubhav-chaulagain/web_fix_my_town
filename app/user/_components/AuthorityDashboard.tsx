@@ -288,7 +288,7 @@ export function AuthorityDashboard() {
                             <div className="flex items-center justify-between">
                                 <span className="text-xs font-bold text-slate-500 uppercase">Total Handled</span>
                                 <span className="text-sm font-black text-slate-800">
-                                    {authorityStats.assignedIssues + authorityStats.completedIssues}
+                                    {authorityStats.completedIssues}
                                 </span>
                             </div>
                             <div className="pt-4 border-t border-slate-100">

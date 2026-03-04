@@ -26,7 +26,7 @@ export default async function Page({
 
     return (
         <div className="p-2 ml-40">
-            <Link className="text-blue-500 border border-blue-500 p-2 rounded inline-block"
+            <Link className="bg-teal-500 border text-white px-5 py-3 rounded-lg inline-block"
                 href="/admin/users/create">Create User</Link>
             <UserTable users={response.data} pagination={response.pagination} search={search} />
         </div>

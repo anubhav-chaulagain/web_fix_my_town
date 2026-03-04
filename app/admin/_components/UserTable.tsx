@@ -29,7 +29,7 @@ const UserTable = (
         pages.push(
             <Link key="prev"
                 className={`px-3 py-1 border rounded-md 
-                    ${currentPage === 1 ? 'bg-gray-200 text-gray-400 cursor-not-allowed pointer-events-none' : 'bg-white text-blue-500 hover:bg-blue-100'}`}
+                    ${currentPage === 1 ? 'bg-gray-200 text-gray-400 cursor-not-allowed pointer-events-none' : 'bg-white text-teal-500 hover:bg-teal-100'}`}
                 href={currentPage === 1 ? '#' : prevHref}>
                 Previous
             </Link>
@@ -45,7 +45,7 @@ const UserTable = (
                 (searchTerm ? `&search=${encodeURIComponent(searchTerm)}` : '');
             pages.push(
                 <Link key={1}
-                    className="px-3 py-1 border rounded-md bg-white text-blue-500 hover:bg-blue-100"
+                    className="px-3 py-1 border rounded-md bg-white text-teal-500 hover:bg-teal-100"
                     href={href}>
                     1
                 </Link>
@@ -64,7 +64,7 @@ const UserTable = (
             pages.push(
                 <Link key={i}
                     className={`px-3 py-1 border rounded-md 
-                        ${i === currentPage ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 hover:bg-blue-100'}`}
+                        ${i === currentPage ? 'bg-teal-500 text-white' : 'bg-white text-teal-500 hover:bg-teal-100'}`}
                     href={href}>
                     {i}
                 </Link>
@@ -82,7 +82,7 @@ const UserTable = (
                 (search ? `&search=${encodeURIComponent(search)}` : '');
             pages.push(
                 <Link key={totalPages}
-                    className="px-3 py-1 border rounded-md bg-white text-blue-500 hover:bg-blue-100"
+                    className="px-3 py-1 border rounded-md bg-white text-teal-500 hover:bg-teal-100"
                     href={href}>
                     {totalPages}
                 </Link>
@@ -95,7 +95,7 @@ const UserTable = (
         pages.push(
             <Link key="next"
                 className={`px-3 py-1 border rounded-md 
-                    ${currentPage === totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed pointer-events-none' : 'bg-white text-blue-500 hover:bg-blue-100'}`}
+                    ${currentPage === totalPages ? 'bg-gray-200 text-gray-400 cursor-not-allowed pointer-events-none' : 'bg-white text-teal-500 hover:bg-teal-100'}`}
                 href={currentPage === totalPages ? '#' : nextHref}>
                 Next
             </Link>
@@ -138,10 +138,10 @@ const UserTable = (
                             }
                         }}
                         placeholder="Search users..."
-                        className="flex-1 px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
+                        className="flex-1 px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
                     />
                     <button onClick={handleSearchChange}
-                        className="px-6 py-2.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-sm hover:shadow-md">
+                        className="px-6 py-2.5 bg-teal-500 text-white rounded-lg hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-sm hover:shadow-md">
                         <span className="text-white">Search</span>
                     </button>
                 </div>
@@ -180,14 +180,14 @@ const UserTable = (
                                 <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 font-medium">{user.fullname || " "}</td>
                                 <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">{user.email}</td>
                                 <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 capitalize">
+                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200 capitalize">
                                         {user.role}
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 text-sm">
                                     <div className="flex items-center gap-3">
                                         <Link href={`/admin/users/${user._id}`} className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 hover:underline font-medium transition-colors duration-150">View</Link>
-                                        <Link href={`/admin/users/${user._id}/edit`} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline font-medium transition-colors duration-150">Edit</Link>
+                                        <Link href={`/admin/users/${user._id}/edit`} className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline font-medium transition-colors duration-150">Edit</Link>
                                         <button
                                             onClick={() => setDeleteId(user._id)}
                                             className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:underline font-medium transition-colors duration-150">Delete</button>
@@ -201,7 +201,7 @@ const UserTable = (
             {/* Pagination */}
             <div className="p-5 flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-t border-gray-200 dark:border-gray-700 gap-4">
                 <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                    Page <span className="font-semibold text-blue-600 dark:text-blue-400">{pagination.page}</span> of <span className="font-semibold text-blue-600 dark:text-blue-400">{pagination.totalPages}</span>
+                    Page <span className="font-semibold text-teal-600 dark:text-teal-400">{pagination.page}</span> of <span className="font-semibold text-teal-600 dark:text-teal-400">{pagination.totalPages}</span>
                 </div>
                 <div className="space-x-2">
                     {makePagination()}

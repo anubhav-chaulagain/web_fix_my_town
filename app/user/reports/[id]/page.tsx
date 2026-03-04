@@ -205,19 +205,87 @@ export default function Page() {
 
                 {isAuthority && (
                     <Card title="Update Work Progress">
-                    <div className="space-y-6">
-                        <Input 
-                        isDisabled = {false}
-                        label="Update Status" 
-                        options={[
-                            { label: 'Stay In Progress', value: 'IN_PROGRESS' },
-                            { label: 'Mark as Resolved', value: 'RESOLVED' },
-                            { label: 'Mark as Rejected/Invalid', value: 'REJECTED' },
-                        ]}
-                        value={issue.status}
-                        />
-                        <Button className="w-full">Post Official Update</Button>
-                    </div>
+                        <div className="space-y-5">
+
+                            {/* Current status indicator */}
+                            <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                                <p className="text-xs text-slate-500 font-medium">Current status:</p>
+                                <StatusBadge status={issue.status} />
+                            </div>
+
+                            {/* Status selector */}
+                            <div>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
+                                    Update Status
+                                </label>
+                                <select
+                                    value={selectedStatus}
+                                    onChange={(e) => setSelectedStatus(e.target.value)}
+                                    className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-sm p-3 rounded-xl outline-none focus:ring-2 focus:ring-teal-400 transition-all"
+                                >
+                                    <option value="in-progress">Stay In Progress</option>
+                                    <option value="resolved">Mark as Resolved</option>
+                                    <option value="rejected">Mark as Rejected / Invalid</option>
+                                </select>
+                            </div>
+
+                            {/* Remarks — required when resolving or rejecting */}
+                            <div>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
+                                    Remarks{selectedStatus !== 'in-progress' && <span className="text-rose-400 ml-1">*</span>}
+                                </label>
+                                <textarea
+                                    value={remarks}
+                                    onChange={(e) => setRemarks(e.target.value)}
+                                    rows={3}
+                                    placeholder={
+                                        selectedStatus === 'resolved'
+                                            ? 'Describe what was done to resolve this issue...'
+                                            : selectedStatus === 'rejected'
+                                            ? 'Explain why this issue is being rejected...'
+                                            : 'Optional notes...'
+                                    }
+                                    className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-sm p-3 rounded-xl outline-none focus:ring-2 focus:ring-teal-400 transition-all resize-none"
+                                />
+                            </div>
+
+                            {/* Feedback */}
+                            {error && (
+                                <p className="text-xs text-red-500 bg-red-50 border border-red-100 px-3 py-2 rounded-lg">
+                                    {error}
+                                </p>
+                            )}
+                            {success && (
+                                <p className="text-xs text-teal-600 bg-teal-50 border border-teal-100 px-3 py-2 rounded-lg">
+                                    {success}
+                                </p>
+                            )}
+
+                            <button
+                                onClick={handleStatusUpdate}
+                                disabled={
+                                    submitting ||
+                                    selectedStatus === issue.status ||
+                                    (selectedStatus !== 'in-progress' && !remarks.trim())
+                                }
+                                className="w-full py-3 bg-teal-600 hover:bg-teal-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm rounded-xl transition-all"
+                            >
+                                {submitting
+                                    ? 'Updating...'
+                                    : selectedStatus === 'resolved'
+                                    ? 'Mark as Resolved'
+                                    : selectedStatus === 'rejected'
+                                    ? 'Mark as Rejected'
+                                    : 'Post Update'
+                                }
+                            </button>
+
+                            {selectedStatus !== 'in-progress' && !remarks.trim() && (
+                                <p className="text-[10px] text-slate-400 text-center">
+                                    Remarks are required before submitting.
+                                </p>
+                            )}
+                        </div>
                     </Card>
                 )}
 
