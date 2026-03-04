@@ -12,9 +12,11 @@ export const API = {
     ADMIN: {
         CREATE: "/api/admin/users",
         GETALL: "/api/admin/users",
+        GET_AUTHORITIES: "/api/admin/authorities",
         GET_ONE: (userId: string) => `/api/admin/users/${userId}`,
         UPDATE: (email: string) => `/api/admin/users/${email}`,
         DELETE: (userId: string) => `/api/admin/users/${userId}`,
+        STATS: "/api/admin/stats", 
     },
     ISSUES: {
         CREATE: '/api/issues',
@@ -24,6 +26,7 @@ export const API = {
         DELETE: (issueId: string) => `/api/issues/${issueId}`,
         GET_MY_RECENT: '/api/issues/my-recent',
         GET_MY_ASSIGNED: '/api/issues/my-assigned',
+        GET_UNASSIGNED: '/api/issues/unassigned',
         // Authority routes
         UPDATE_STATUS: (issueId: string) => `/api/issues/${issueId}/status`,
         ASSIGN: (issueId: string) => `/api/issues/${issueId}/assign`,

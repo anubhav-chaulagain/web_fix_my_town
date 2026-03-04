@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { handleGetAllUsers } from "@/lib/actions/admin/user-action";
-import UserTable from "./_components/UserTable";
+import UserTable from "../_components/UserTable";
 
 export default async function Page({
     searchParams
@@ -25,7 +25,7 @@ export default async function Page({
     }
 
     return (
-        <div className="p-2">
+        <div className="p-2 ml-40">
             <Link className="text-blue-500 border border-blue-500 p-2 rounded inline-block"
                 href="/admin/users/create">Create User</Link>
             <UserTable users={response.data} pagination={response.pagination} search={search} />

@@ -1,5 +1,5 @@
 import { handleGetOneUser } from "@/lib/actions/admin/user-action";
-import UpdateUserForm from "../../_components/UpdateUserForm";
+import UpdateUserForm from "../../../_components/UpdateUserForm";
 export default async function Page({
     params
 }: {

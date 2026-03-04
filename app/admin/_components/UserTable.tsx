@@ -142,7 +142,7 @@ const UserTable = (
                     />
                     <button onClick={handleSearchChange}
                         className="px-6 py-2.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-sm hover:shadow-md">
-                        <span className="text-slate-500">Search</span>
+                        <span className="text-white">Search</span>
                     </button>
                 </div>
             </div>

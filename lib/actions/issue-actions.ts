@@ -12,7 +12,8 @@ import {
     updateIssueStatusOnly,
     resolveIssue,
     assignIssue,
-    getMyAssignedIssues
+    getMyAssignedIssues,
+    getUnassignedIssues
 } from "../api/issue";
 
 export const handleCreateIssue = async (formData: FormData) => {
@@ -159,9 +160,9 @@ export const handleGetMyRecentIssues = async () => {
     }
 }
 
-export const handleAssignIssue = async (issueId: string, assignedTo: string, priority?: string) => {
+export const handleAssignIssue = async (issueId: string, assignedTo: string) => {
     try {
-        const res = await assignIssue(issueId, assignedTo, priority);
+        const res = await assignIssue(issueId, assignedTo);
         if (res.success) {
             return {
                 success: true,
@@ -238,5 +239,21 @@ export const handleGetMyAssignedIssues = async (params?: {
             pagination: null, 
             message: err.message || "Failed to fetch assigned issues" 
         };
+    }
+}
+
+export const handleGetUnassignedIssues = async (limit = 5) => {
+    try {
+        const res = await getUnassignedIssues(limit);
+        if (res.success) {
+            return {
+                success: true,
+                data: res.data,
+                message: res.message,
+            };
+        }
+        return { success: false, data: null, message: res.message || "Failed to fetch unassigned issues" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to fetch unassigned issues" };
     }
 }

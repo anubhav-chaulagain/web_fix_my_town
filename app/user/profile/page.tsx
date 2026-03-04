@@ -11,7 +11,7 @@ export default function Page() {
     // const imageUrl = user?.profilePicture?`http://localhost:5050/uploads/${user?.profilePicture}`:"/images/garbage.png";
     
     // Show loading state while checking auth
-    if (loading) {
+    if (loading || user === undefined) {
         return (
             <section className="space-y-8 max-w-4xl mx-auto mt-8 mb-16">
                 <div className="animate-pulse">

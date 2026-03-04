@@ -1,5 +1,5 @@
 "use server";
-import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from "@/lib/api/admin/user";
+import { createUser, deleteUser, fetchAdminStats, getAllUsers, getAuthorityUsers, getUserById, updateUser } from "@/lib/api/admin/user";
 import { revalidatePath } from 'next/cache';
 
 export const handleCreateUser = async (data: FormData) => {
@@ -111,3 +111,26 @@ export const handleDeleteUser = async (id: string) => {
     }
 }
         
+export const handleGetAuthorityUsers = async () => {
+    try {
+        const res = await getAuthorityUsers();
+        if (res.success) {
+            return { success: true, data: res.data, message: res.message };
+        }
+        return { success: false, data: null, message: res.message || "Failed to fetch authority users" };
+    } catch (err: Error | any) {
+        return { success: false, data: null, message: err.message || "Failed to fetch authority users" };
+    }
+}
+
+export const handleFetchAdminStats = async () => {
+    try {
+        const res = await fetchAdminStats();
+        if (res.success) {
+            return { success: true, data: res.data, message: res.message };
+        }
+        return { success: false, data: null, message: res.message || "Failed to fetch admin stats" };
+    } catch (error: Error | any) {
+        return { success: false, data: null, message: error.message || "Failed to fetch admin stats" };
+    }
+};

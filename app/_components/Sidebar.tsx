@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { Icons } from "../constants";
+import { Icons } from "../user/constants";
 
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
@@ -12,13 +12,30 @@ const USER_LINKS = [
     { href: "/user/profile", label: "Profile", Icon: Icons.Profile},
 ]
 
+const ADMIN_LINKS = [
+    { href: "/admin/dashboard",   label: "Dashboard",    Icon: Icons.Dashboard  },
+    { href: "/admin/users",       label: "Users",  Icon: Icons.Profile    },
+    { href: "/admin/reports",     label: "Reports",      Icon: Icons.MyReports  },
+    { href: "/admin/profile",     label: "Profile",      Icon: Icons.Profile    },
+];
+
 export default function Sidebar() {
     const { user } = useAuth();
     const pathname = usePathname();
+    const isAdmin = user?.role === "admin";
+    const isAuthority = user?.role === "authority";
 
     const visibleLinks = USER_LINKS.filter(link =>
         !(link.href === "/user/reportIssue" && user?.role === "authority")
     );
+
+    const adminLinks = isAdmin
+        ? ADMIN_LINKS
+        : USER_LINKS.filter(link =>
+            !(link.href === "/user/reportIssue" && isAuthority)
+          );
+    
+    const links = isAdmin ? adminLinks : visibleLinks;
 
     return (
         <aside className="fixed top-0 left-0 h-screen w-64 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 overflow-y-auto z-40 shadow-2xl">
@@ -37,7 +54,7 @@ export default function Sidebar() {
 
     {/* Navigation Links */}
     <nav className="p-4 space-y-2">
-        {visibleLinks.map(link => {
+        {links.map(link => {
             const isActive = link.href === pathname;
             return (
                 <Link 

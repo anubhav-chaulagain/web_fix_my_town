@@ -1,10 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Button, Card, Input, StatusBadge } from "../_components/Shared";
-import { Icons } from "../constants";
+import { Button, Card, StatusBadge } from "../_components/Shared";
+import { Icons, IssueStatus } from "../constants";
 import Image from "next/image";
-import { IssueStatus } from "@/lib/types/issue.type";
 import { handleGetAllIssues } from "@/lib/actions/issue-actions";
 
 interface Issue {

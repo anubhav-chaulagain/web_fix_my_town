@@ -126,11 +126,10 @@ export const getMyRecentIssues = async () => {
 
 // Add these to the existing file
 
-export const assignIssue = async(issueId: string, assignedTo: string, priority?: string) => {
+export const assignIssue = async(issueId: string, assignedTo: string) => {
     try {
         const response = await axios.patch(API.ISSUES.ASSIGN(issueId), { 
-            assignedTo, 
-            priority 
+            assignedTo
         });
         return response.data;
     } catch (err: Error | any) {
@@ -192,3 +191,19 @@ export const getMyAssignedIssues = async(params?: {
         )
     }
 }
+
+export const getUnassignedIssues = async (limit = 5) => {
+    try {
+        const response = await axios.get(API.ISSUES.GET_UNASSIGNED, {
+            params: { limit },
+        });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to fetch unassigned issues"
+        );
+    }
+}
+

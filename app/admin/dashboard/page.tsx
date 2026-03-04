@@ -1,14 +1,11 @@
 "use client";
 import { useAuth } from "@/app/context/AuthContext";
-import { CitizenDashboard } from "../_components/CitizenDashboard";
-import { AuthorityDashboard } from "../_components/AuthorityDashboard";
-
+import { AdminDashboard } from "@/app/admin/_components/AdminDashboard";
 
 // ─── Root Page ─────────────────────────────────────────────────────────────────
 
 export default function Page() {
-    const { user, loading } = useAuth();
-    console.log("User in Dashboard:", user);
+    const { loading } = useAuth();
 
     if (loading) {
         return (
@@ -23,9 +20,5 @@ export default function Page() {
         );
     }
 
-    if (user?.role === 'authority') {
-        return <AuthorityDashboard />;
-    }
-
-    return <CitizenDashboard />;
+    return <AdminDashboard />;
 }

@@ -100,3 +100,29 @@ export const deleteUser = async (id: string) => {
             || error.message || 'Delete user failed');
     }
 }
+
+export const getAuthorityUsers = async () => {
+    try {
+        const response = await axios.get(API.ADMIN.GET_AUTHORITIES);
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Failed to fetch authority users"
+        );
+    }
+}
+
+export const fetchAdminStats = async () => {
+    try {
+        const response = await axios.get(API.ADMIN.STATS);
+        return response.data;
+    } catch (error: Error | any) {
+        throw new Error(
+            error.response?.data?.message
+            || error.message
+            || "Failed to fetch admin stats"
+        );
+    }
+};
