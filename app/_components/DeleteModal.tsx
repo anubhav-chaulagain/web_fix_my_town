@@ -44,7 +44,7 @@ export default function DeleteModal({
           </button>
           <button
             onClick={onConfirm}
-            className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-black rounded-lg font-medium transition-all duration-200 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-all duration-200 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
             Delete
           </button>

@@ -85,7 +85,7 @@ export function AuthorityDashboard() {
         };
         
         fetchAll();
-    }, []);
+    }, [user]);
 
     const stats = [
         {

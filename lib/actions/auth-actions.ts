@@ -1,6 +1,6 @@
 // server side processing
 'use server'
-import { register, login, requestPasswordReset, resetPassword, fetchReportStats, fetchAuthorityStats } from "../api/auth";
+import { register, login, requestPasswordReset, resetPassword, fetchReportStats, fetchAuthorityStats, updateProfile } from "../api/auth";
 import { setAuthToken, setUserData } from "../cookie";
 
 export const handleRegister = async ( formData: any ) => {
@@ -103,5 +103,19 @@ export const handleFetchAuthorityStats = async () => {
         return { success: false, data: null, message: response.message || 'Failed to fetch authority stats' }
     } catch (error: Error | any) {
         return { success: false, data: null, message: error.message || 'Failed to fetch authority stats' }
+    }
+}
+
+export const handleUpdateProfile = async (formData: FormData) => {
+    try {
+        const res = await updateProfile(formData);
+        if (res.success) {
+            // Update the cookie so useAuth reflects new data immediately
+            await setUserData(res.data);
+            return { success: true, data: res.data, message: "Profile updated successfully" };
+        }
+        return { success: false, message: res.message || "Profile update failed" };
+    } catch (err: Error | any) {
+        return { success: false, message: err.message || "Profile update failed" };
     }
 }

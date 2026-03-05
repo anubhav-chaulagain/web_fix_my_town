@@ -1,6 +1,5 @@
 'use client';
 import Image from "next/image";
-import profileImg from "@/app/assets/garbage.png";
 import { useAuth } from "@/app/context/AuthContext";
 
 export default function Header() {
@@ -20,18 +19,18 @@ export default function Header() {
                         </li>
                     </ul>
                 </li>
-                <li className="w-10 h-10 rounded-[20px] overflow-hidden">
-                    {user?.profilePicture ? (
-                        <Image
-                            src={`http://localhost:5050${user.profilePicture}`}
-                            alt="Profile picture"
-                            width={40}
-                            height={40}
-                            className="w-full h-full object-cover"
-                        />
-                    ) : (
-                        <Image src={profileImg} alt="Profile picture" />
-                    )}
+                <li className="w-10 h-10 rounded-full overflow-hidden bg-slate-100">
+                    <Image
+                        src={
+                            user?.profilePicture
+                                ? `http://localhost:5050/uploads/${user.profilePicture}`
+                                : "/images/profile-placeholder.png"
+                        }
+                        alt="Profile picture"
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                    />
                 </li>
             </ul>
         </div>

@@ -15,7 +15,7 @@ const USER_LINKS = [
 const ADMIN_LINKS = [
     { href: "/admin/dashboard",   label: "Dashboard",    Icon: Icons.Dashboard  },
     { href: "/admin/users",       label: "Users",  Icon: Icons.Profile    },
-    { href: "/admin/reports",     label: "Reports",      Icon: Icons.MyReports  },
+    { href: "/admin/issues",     label: "Issues",      Icon: Icons.MyReports  },
     { href: "/admin/profile",     label: "Profile",      Icon: Icons.Profile    },
 ];
 

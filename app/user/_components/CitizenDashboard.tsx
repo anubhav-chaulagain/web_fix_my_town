@@ -37,15 +37,19 @@ export function CitizenDashboard() {
         inprogressReports: 0,
     });
     const [recentIssues, setRecentIssues] = useState<RecentIssue[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        handleFetchReportStats().then((res) => {
-            if (res.success && res.data) setReportStats(res.data);
-        });
-        handleGetMyRecentIssues().then((res) => {
-            if (res.success && res.data) setRecentIssues(res.data);
-        });
-    }, []);
+        if (!user) return;
+
+        Promise.all([
+            handleFetchReportStats(),
+            handleGetMyRecentIssues(),
+        ]).then(([statsRes, issuesRes]) => {
+            if (statsRes.success && statsRes.data) setReportStats(statsRes.data);
+            if (issuesRes.success && issuesRes.data) setRecentIssues(issuesRes.data);
+        }).finally(() => setLoading(false));
+    }, [user])
 
     const stats = [
         { label: 'My Total Reports',       value: reportStats.totalReports,      color: 'text-blue-600',  bg: 'bg-blue-50',  icon: Icons.Report },
@@ -53,6 +57,20 @@ export function CitizenDashboard() {
         { label: 'In Progress',            value: reportStats.inprogressReports, color: 'text-blue-500',  bg: 'bg-blue-50',  icon: Icons.Report },
         { label: 'Resolved Issues',        value: reportStats.resolvedReports,   color: 'text-teal-600',  bg: 'bg-teal-50',  icon: Icons.ChevronRight },
     ];
+
+    if (loading) {
+        return (
+            <div className="mt-8 space-y-6 animate-pulse ml-40">
+                <div className="h-8 bg-slate-200 rounded w-1/3" />
+                <div className="grid grid-cols-4 gap-6">
+                    {[...Array(4)].map((_, i) => (
+                        <div key={i} className="h-24 bg-slate-100 rounded-xl" />
+                    ))}
+                </div>
+                <div className="h-64 bg-slate-100 rounded-xl" />
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">

@@ -29,6 +29,9 @@ export async function proxy(req: NextRequest) {
     }
 
     if (isPublicPath && user) {
+        if (user.role === 'admin') {
+            return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+        }
         return NextResponse.redirect(new URL("/user/dashboard", req.url));
     }
 

@@ -8,9 +8,8 @@ import { AuthorityDashboard } from "../_components/AuthorityDashboard";
 
 export default function Page() {
     const { user, loading } = useAuth();
-    console.log("User in Dashboard:", user);
 
-    if (loading) {
+    if (loading || !user) {
         return (
             <div className="mt-8 space-y-4 animate-pulse">
                 <div className="h-8 bg-slate-200 rounded w-1/3" />

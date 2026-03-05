@@ -95,7 +95,8 @@ export const Button: React.FC<{
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit';
-}> = ({ children, variant = 'primary', onClick, className = '', type = 'button' }) => {
+  disabled?: boolean;
+}> = ({ children, variant = 'primary', onClick, className = '', type = 'button', disabled }) => {
   const base = "px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 text-sm";
   const variants = {
     primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-teal-200/50 shadow-md",
@@ -105,7 +106,7 @@ export const Button: React.FC<{
   };
 
   return (
-    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
+    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`} disabled={disabled}>
       {children}
     </button>
   );

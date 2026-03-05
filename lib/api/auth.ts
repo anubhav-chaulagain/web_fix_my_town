@@ -66,3 +66,17 @@ export const fetchAuthorityStats = async () => {
     }
 }
 
+export const updateProfile = async (formData: FormData) => {
+    try {
+        const response = await axios.put(API.AUTH.UPDATE_PROFILE, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+        return response.data;
+    } catch (err: Error | any) {
+        throw new Error(
+            err.response?.data?.message
+            || err.message
+            || "Profile update failed"
+        );
+    }
+}

@@ -26,6 +26,7 @@ export const getAllIssues = async(params?: {
     category?: string;
     page?: number;
     limit?: number;
+    search?: string;
 }) => {
     try {
         const response = await axios.get(API.ISSUES.GETALL, { params });

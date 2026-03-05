@@ -7,8 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { handleLogin } from "@/lib/actions/auth-actions";
 import Link from "next/link";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function LoginPage() {
+    const { checkAuth } = useAuth();
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const {register, handleSubmit, formState:{errors}} = useForm<LoginForm>({
@@ -31,11 +33,15 @@ export default function LoginPage() {
                     throw new Error(res.message || "Login failed")
                 }
 
-                console.log("Login successful, redirecting..."); // Debug log
-                
                 // Use startTransition for the redirect
-                router.push("/user/dashboard");
-                router.refresh(); // Force a refresh after redirect
+                await checkAuth();
+                const role = res.data?.role;
+                if (role === 'admin') {
+                    router.push('/admin/dashboard');
+                } else {
+                    router.push('/user/dashboard');
+                }
+                router.refresh();
                 
             } catch(err: Error | any){
                 console.error("Login error:", err); // Debug log

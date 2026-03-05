@@ -40,6 +40,7 @@ export const handleGetAllIssues = async (params?: {
     category?: string;
     page?: number;
     limit?: number;
+    search?: string;
 }) => {
     try {
         // how data sent from component to backend api
