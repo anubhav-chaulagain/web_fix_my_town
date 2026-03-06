@@ -5,8 +5,10 @@ import { RequestPasswordResetDTO, RequestPasswordResetSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { requestPasswordReset } from "@/lib/api/auth";
 import { toast } from "react-toastify";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function Page() {
+    const { logout } = useAuth();
     const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<RequestPasswordResetDTO>({
         resolver: zodResolver(RequestPasswordResetSchema)
     });
@@ -16,6 +18,7 @@ export default function Page() {
             const response = await requestPasswordReset(data.email);
             if (response.success) {
                 toast.success('Password reset link sent to your email.');
+                logout();
             }else{
                 toast.error(response.message || 'Failed to request password reset.');
             }

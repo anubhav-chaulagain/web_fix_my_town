@@ -6,8 +6,10 @@ import { handleUpdateProfile } from "@/lib/actions/auth-actions";
 import { HelpCircle } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+    const router = useRouter();
     const { user, logout, loading, checkAuth } = useAuth();
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
@@ -64,6 +66,10 @@ export default function Page() {
         setRemovedExisting(false);
         setFullname(user?.fullname ?? '');
     };
+
+    const handleForgotPassword = () => {
+        router.push("/request-password-reset");
+    }
 
     if (loading) {
         return (
@@ -174,7 +180,7 @@ export default function Page() {
                     <div className="flex sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6">
                         <div className="flex items-center space-x-2 text-teal-600 hover:text-teal-700 cursor-pointer">
                             <HelpCircle size={18} />
-                            <span>Forgot Password</span>
+                            <button onClick={handleForgotPassword} className="hover:cursor-pointer">Forgot Password</button>
                         </div>
                         <button
                             onClick={logout}

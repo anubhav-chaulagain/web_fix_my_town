@@ -9,7 +9,7 @@ export default function UserLayout({children}: {children: React.ReactNode}) {
                 <div className="">{/*xl:block hidden*/}
                     <Sidebar/>
                 </div>
-                <div className='w-full'>
+                <div className='w-full ml-15'>
                    {/* Top Header  */}
                    <Header/>
                     {/* Body Content  */}

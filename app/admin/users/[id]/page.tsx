@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     const user = response.data;
 
     return (
-        <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40 max-w-3xl">
+        <div className="space-y-8 animate-in fade-in duration-500 mt-2 mb-16 ml-40 max-w-3xl">
             <div className="flex items-center space-x-4">
                 <Link href="/admin/users" className="p-2 hover:bg-slate-200 rounded-full transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

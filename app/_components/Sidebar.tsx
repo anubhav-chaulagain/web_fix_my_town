@@ -38,7 +38,7 @@ export default function Sidebar() {
     const links = isAdmin ? adminLinks : visibleLinks;
 
     return (
-        <aside className="fixed top-0 left-0 h-screen w-64 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 overflow-y-auto z-40 shadow-2xl">
+        <aside className="fixed top-0 left-0 h-screen w-64 xl:w-52 bg-linear-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700 overflow-y-auto z-40 shadow-2xl">
     {/* Logo Section */}
     <div className="p-6 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
