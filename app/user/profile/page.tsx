@@ -93,7 +93,6 @@ export default function Page() {
             <Card>
                 <div className="flex flex-col items-center sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-8 mb-8 pb-8 border-b border-slate-100">
 
-                    {/* Avatar with upload button */}
                     <div className="relative group">
                         <Image
                             src={
@@ -108,7 +107,6 @@ export default function Page() {
                             alt="Profile Picture"
                         />
 
-                        {/* Remove button */}
                         {previewImage && (
                             <button
                                 type="button"
@@ -119,7 +117,6 @@ export default function Page() {
                             </button>
                         )}
 
-                        {/* Camera button */}
                         <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
@@ -131,7 +128,6 @@ export default function Page() {
                             </svg>
                         </button>
 
-                        {/* Hidden file input */}
                         <input
                             ref={fileInputRef}
                             type="file"

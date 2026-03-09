@@ -10,7 +10,6 @@ import ImageCarousel from "../../_components/ImageCarousel";
 import { MapPin } from "lucide-react";
 import dynamic from "next/dynamic";
 
-// Dynamic import — same pattern as reportIssue page
 const IssueMap = dynamic(() => import('../../_components/IssueMap'), {
     ssr: false,
     loading: () => (

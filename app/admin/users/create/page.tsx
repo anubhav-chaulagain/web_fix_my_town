@@ -84,7 +84,6 @@ export default function CreateUserPage() {
             <Card>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
-                    {/* Avatar picker */}
                     <div className="flex items-center space-x-6 pb-6 border-b border-slate-100">
                         <div className="relative">
                             {previewImage ? (
@@ -120,7 +119,6 @@ export default function CreateUserPage() {
                                 />
                             )}
 
-                            {/* Camera button */}
                             <button
                                 type="button"
                                 onClick={() => fileInputRef.current?.click()}
@@ -153,7 +151,6 @@ export default function CreateUserPage() {
                         </div>
                     </div>
 
-                    {/* Role */}
                     <div className="space-y-1.5">
                         <label className={labelClass}>Role</label>
                         <select className={inputClass} {...register("role")}>
@@ -163,7 +160,6 @@ export default function CreateUserPage() {
                         {errors.role && <p className={errorClass}>{errors.role.message}</p>}
                     </div>
 
-                    {/* Core fields */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-1.5">
                             <label className={labelClass}>Full Name</label>
@@ -182,7 +178,6 @@ export default function CreateUserPage() {
                         </div>
                     </div>
 
-                    {/* Authority fields */}
                     {selectedRole === 'authority' && (
                         <div className="p-5 bg-teal-50 rounded-xl border border-teal-100 space-y-4">
                             <h3 className="text-sm font-bold text-teal-900 uppercase tracking-wider">Authority Information</h3>

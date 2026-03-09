@@ -63,7 +63,6 @@ export default function UpdateUserForm({ user }: { user: any }) {
         <Card>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
-                {/* Avatar */}
                 <div className="flex items-center space-x-6 pb-6 border-b border-slate-100">
                     <div className="relative">
                         <Image
@@ -128,7 +127,6 @@ export default function UpdateUserForm({ user }: { user: any }) {
                     </div>
                 </div>
 
-                {/* Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-1.5">
                         <label className="text-sm font-medium text-slate-700">Full Name</label>

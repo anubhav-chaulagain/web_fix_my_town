@@ -43,7 +43,7 @@ export const UserSchema = z.object({
 
 export type UserData = z.infer<typeof UserSchema>;
 
-// Add this to your schema file
+
 export const UpdateUserSchema = z.object({
     email: z.email({ message: "Enter a valid email" }).optional(),
     fullname: z.string().min(6, { message: "Minimum 6 characters" }).optional(),

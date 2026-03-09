@@ -5,7 +5,6 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix for default marker icon issue in Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -41,7 +40,6 @@ export default function MapPicker({ onLocationSelect, initialPosition = [27.7172
   }, []);
 
   const handleLocationSelect = async (lat: number, lng: number) => {
-    // Reverse geocoding using OpenStreetMap Nominatim (free)
     try {
       const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`

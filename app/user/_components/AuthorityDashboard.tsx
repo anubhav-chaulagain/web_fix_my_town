@@ -132,7 +132,6 @@ export function AuthorityDashboard() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">
-            {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
                     <h2 className="text-3xl font-bold text-slate-900">Operational Command</h2>
@@ -145,7 +144,6 @@ export function AuthorityDashboard() {
                 </Button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, i) => (
                     <Card key={i} className="group hover:border-teal-200 transition-all cursor-default">
@@ -162,9 +160,7 @@ export function AuthorityDashboard() {
                 ))}
             </div>
 
-            {/* Content grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Active Worklist Table */}
                 <div className="lg:col-span-2 space-y-6">
                     <Card title="My Active Worklist">
                         <div className="overflow-x-auto">
@@ -239,9 +235,7 @@ export function AuthorityDashboard() {
                     </Card>
                 </div>
 
-                {/* Sidebar */}
                 <div className="space-y-6">
-                    {/* Authority Info */}
                     <Card title="Your Assignment Info">
                         <div className="space-y-4">
                             <div>
@@ -273,7 +267,6 @@ export function AuthorityDashboard() {
                         </div>
                     </Card>
 
-                    {/* Performance */}
                     <Card title="Performance">
                         <div className="space-y-4">
                             <div className="flex items-center justify-between">

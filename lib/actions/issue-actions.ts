@@ -1,4 +1,4 @@
-// server side processing
+
 'use server'
 import { 
     createIssue, 
@@ -18,9 +18,7 @@ import {
 
 export const handleCreateIssue = async (formData: FormData) => {
     try {
-        // how data sent from component to backend api
         const res = await createIssue(formData);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -43,9 +41,7 @@ export const handleGetAllIssues = async (params?: {
     search?: string;
 }) => {
     try {
-        // how data sent from component to backend api
         const res = await getAllIssues(params);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -62,9 +58,7 @@ export const handleGetAllIssues = async (params?: {
 
 export const handleGetIssueById = async (issueId: string) => {
     try {
-        // how data sent from component to backend api
         const res = await getIssueById(issueId);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -80,9 +74,7 @@ export const handleGetIssueById = async (issueId: string) => {
 
 export const handleUpdateIssue = async (issueId: string, formData: FormData | any) => {
     try {
-        // how data sent from component to backend api
         const res = await updateIssue(issueId, formData);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -98,9 +90,7 @@ export const handleUpdateIssue = async (issueId: string, formData: FormData | an
 
 export const handleDeleteIssue = async (issueId: string) => {
     try {
-        // how data sent from component to backend api
         const res = await deleteIssue(issueId);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -115,9 +105,7 @@ export const handleDeleteIssue = async (issueId: string) => {
 
 export const handleUpdateIssueStatus = async (issueId: string, status: string) => {
     try {
-        // how data sent from component to backend api
         const res = await updateIssueStatus(issueId, status);
-        // component return logic
         if (res.success) {
             return {
                 success: true,
@@ -133,9 +121,7 @@ export const handleUpdateIssueStatus = async (issueId: string, status: string) =
 
 export const handleGetUserIssues = async (userId?: string) => {
     try {
-        // how data sent from component to backend api
         const res = await getUserIssues(userId);
-        // component return logic
         if (res.success) {
             return {
                 success: true,

@@ -4,7 +4,6 @@ import { CitizenDashboard } from "../_components/CitizenDashboard";
 import { AuthorityDashboard } from "../_components/AuthorityDashboard";
 
 
-// ─── Root Page ─────────────────────────────────────────────────────────────────
 
 export default function Page() {
     const { user, loading } = useAuth();

@@ -74,7 +74,6 @@ export function CitizenDashboard() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">
-            {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
                     <h2 className="text-3xl font-bold text-slate-900">
@@ -90,7 +89,6 @@ export function CitizenDashboard() {
                 </Button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, i) => (
                     <Card key={i} className="group hover:border-teal-200 transition-all cursor-default">
@@ -107,9 +105,7 @@ export function CitizenDashboard() {
                 ))}
             </div>
 
-            {/* Content grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Recent Activity Table */}
                 <div className="lg:col-span-2">
                     <Card title="Your Recent Activity">
                         {recentIssues.length === 0 ? (
@@ -178,9 +174,7 @@ export function CitizenDashboard() {
                     </Card>
                 </div>
 
-                {/* Sidebar */}
                 <div className="space-y-6">
-                    {/* Quick Map View */}
                     <Card title="Quick Map View">
                         <div className="aspect-square bg-slate-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-slate-200 relative overflow-hidden">
                             <div className="relative bg-white p-4 rounded-xl shadow-lg border border-slate-200 text-center">
@@ -196,7 +190,6 @@ export function CitizenDashboard() {
                         </div>
                     </Card>
 
-                    {/* Tips */}
                     <div className="bg-teal-900 text-white rounded-xl p-5">
                         <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
                             <span className="w-5 h-5 bg-teal-500 rounded flex items-center justify-center text-xs">?</span>

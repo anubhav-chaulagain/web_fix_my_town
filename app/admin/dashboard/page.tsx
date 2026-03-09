@@ -2,7 +2,6 @@
 import { useAuth } from "@/app/context/AuthContext";
 import { AdminDashboard } from "@/app/admin/_components/AdminDashboard";
 
-// ─── Root Page ─────────────────────────────────────────────────────────────────
 
 export default function Page() {
     const { loading } = useAuth();

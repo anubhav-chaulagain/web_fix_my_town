@@ -1,13 +1,10 @@
-// server side processing
 'use server'
 import { register, login, requestPasswordReset, resetPassword, fetchReportStats, fetchAuthorityStats, updateProfile } from "../api/auth";
 import { setAuthToken, setUserData } from "../cookie";
 
 export const handleRegister = async ( formData: any ) => {
     try {
-        // how data sent from component to backend api
         const res = await register(formData);
-        // component return logic
         if (res.success){
             return {
                 success:true,
@@ -23,9 +20,7 @@ export const handleRegister = async ( formData: any ) => {
 
 export const handleLogin = async ( formData: any ) => {
     try {
-        // how data sent from component to backend api
         const res = await login(formData);
-        // component return logic
         if (res.success){
             const token = res.token;
             console.log("Received token", token);
@@ -110,7 +105,6 @@ export const handleUpdateProfile = async (formData: FormData) => {
     try {
         const res = await updateProfile(formData);
         if (res.success) {
-            // Update the cookie so useAuth reflects new data immediately
             await setUserData(res.data);
             return { success: true, data: res.data, message: "Profile updated successfully" };
         }

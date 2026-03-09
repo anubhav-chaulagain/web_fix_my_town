@@ -8,7 +8,7 @@ export const createUser = async (userData: any) => {
             userData,
             {
                 headers: {
-                    'Content-Type': 'multipart/form-data', // for file upload/multer
+                    'Content-Type': 'multipart/form-data', 
                 }
             }
         );
@@ -56,7 +56,7 @@ export const updateUser = async (id: string, updateData: any) => {
             updateData,
             {
                 headers: {
-                    'Content-Type': 'multipart/form-data', // for file upload/multer
+                    'Content-Type': 'multipart/form-data', 
                 }
             }
         );
@@ -75,7 +75,7 @@ export const updateProfile = async(profileData: any) => {
             profileData,
             {
                 headers: {
-                    'Content-Type': 'multipart/form-data' // for file upload/multer
+                    'Content-Type': 'multipart/form-data' 
                 }
             }
         );

@@ -10,7 +10,6 @@ export default function ImageCarousel({ images }: { images: string[] }) {
 
     return (
         <div className="mb-6 space-y-3">
-            {/* Main viewer */}
             <div className="aspect-video bg-slate-100 rounded-xl overflow-hidden relative group">
                 <Image
                     src={`http://localhost:5050${images[current]}`}
@@ -20,12 +19,10 @@ export default function ImageCarousel({ images }: { images: string[] }) {
                     height={388}
                 />
 
-                {/* Counter badge */}
                 <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full">
                     {current + 1} / {total}
                 </div>
 
-                {/* Arrows — only show if more than 1 image */}
                 {total > 1 && (
                     <>
                         <button
@@ -47,7 +44,6 @@ export default function ImageCarousel({ images }: { images: string[] }) {
                     </>
                 )}
 
-                {/* Dot indicators */}
                 {total > 1 && (
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
                         {images.map((_, i) => (
@@ -65,7 +61,6 @@ export default function ImageCarousel({ images }: { images: string[] }) {
                 )}
             </div>
 
-            {/* Thumbnail strip */}
             {total > 1 && (
                 <div className="flex gap-2 overflow-x-auto pb-1">
                     {images.map((img, i) => (

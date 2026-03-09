@@ -48,7 +48,6 @@ export function AdminDashboard() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">
-            {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
                     <h2 className="text-3xl font-bold text-slate-900">
@@ -64,7 +63,6 @@ export function AdminDashboard() {
                 </Button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, i) => (
                     <Card key={i} className="group hover:border-teal-200 transition-all cursor-default">
@@ -81,9 +79,7 @@ export function AdminDashboard() {
                 ))}
             </div>
 
-            {/* Content grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Assignment Queue */}
                 <div className="lg:col-span-2">
                     <Card title="Assignment Queue (Unassigned)">
                         {unassignedIssues.length === 0 ? (
@@ -107,7 +103,6 @@ export function AdminDashboard() {
                                                 key={issue._id}
                                                 className="hover:bg-slate-50 transition-colors group"
                                             >
-                                                {/* Report */}
                                                 <td className="py-4">
                                                     <div className="flex items-center gap-3">
                                                         {issue.issueImages?.[0] ? (
@@ -134,17 +129,14 @@ export function AdminDashboard() {
                                                     </div>
                                                 </td>
 
-                                                {/* Category */}
                                                 <td className="py-4 text-sm font-medium text-slate-600 uppercase tracking-wide">
                                                     {issue.category}
                                                 </td>
 
-                                                {/* Status */}
                                                 <td className="py-4">
                                                     <StatusBadge status={issue.status} />
                                                 </td>
 
-                                                {/* Action */}
                                                 <td className="flex justify-end py-4">
                                                     <button
                                                         onClick={() => router.push(`/admin/issues/${issue._id}`)}
@@ -170,9 +162,7 @@ export function AdminDashboard() {
                     </Card>
                 </div>
 
-                {/* Sidebar */}
                 <div className="space-y-6">
-                    {/* Quick Map View */}
                     <Card title="Quick Map View">
                         <div className="aspect-square bg-slate-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-slate-200 relative overflow-hidden">
                             <div className="relative bg-white p-4 rounded-xl shadow-lg border border-slate-200 text-center">
@@ -188,7 +178,6 @@ export function AdminDashboard() {
                         </div>
                     </Card>
 
-                    {/* Tips */}
                     <div className="bg-teal-900 text-white rounded-xl p-5">
                         <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
                             <span className="w-5 h-5 bg-teal-500 rounded flex items-center justify-center text-xs">?</span>

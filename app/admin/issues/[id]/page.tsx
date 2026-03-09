@@ -145,7 +145,6 @@ export default function AdminIssueDetailPage() {
     return (
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">
 
-            {/* Header */}
             <div className="flex items-center space-x-4">
                 <button onClick={() => router.back()} className="p-2 hover:bg-slate-200 rounded-full transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -163,7 +162,6 @@ export default function AdminIssueDetailPage() {
                 </div>
             </div>
 
-            {/* Feedback banners */}
             {error && (
                 <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl">
                     {error}
@@ -177,7 +175,6 @@ export default function AdminIssueDetailPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                {/* Left — Issue Details */}
                 <div className="lg:col-span-2 space-y-8">
                     <Card>
                         {issue.issueImages && issue.issueImages.length > 0 ? (
@@ -222,10 +219,8 @@ export default function AdminIssueDetailPage() {
                     </Card>
                 </div>
 
-                {/* Right — Admin Controls */}
                 <div className="space-y-6">
 
-                    {/* Assign Issue */}
                     <div className="bg-slate-900 text-white rounded-xl p-5 space-y-5">
                         <h3 className="font-bold text-sm flex items-center gap-2">
                             <span className="w-5 h-5 bg-teal-500 rounded flex items-center justify-center text-xs">
@@ -240,7 +235,6 @@ export default function AdminIssueDetailPage() {
                             </div>
                         )}
 
-                        {/* Authority selector */}
                         <div>
                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">
                                 Select Authority Officer
@@ -273,7 +267,6 @@ export default function AdminIssueDetailPage() {
                         </div>
                     </div>
 
-                    {/* Status Override */}
                     <Card title="Override Status">
                         <div className="space-y-4">
                             <div>
@@ -313,7 +306,6 @@ export default function AdminIssueDetailPage() {
                         </div>
                     </Card>
 
-                    {/* Map */}
                     {issue.latitude && issue.longitude ? (
                         <Card title="Issue Location">
                             <IssueMap lat={issue.latitude} lng={issue.longitude} />

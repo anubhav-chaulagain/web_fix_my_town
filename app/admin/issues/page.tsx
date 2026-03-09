@@ -66,7 +66,6 @@ export default function Page() {
         <div className="space-y-8 animate-in fade-in duration-500 mt-8 mb-16 ml-40">
             <div className="flex justify-between items-center">
                 <div>
-                    {/* ↓ changed */}
                     <h2 className="text-3xl font-bold text-slate-900">All Issues</h2>
                     <p className="text-slate-500 mt-1">Manage and track all reported issues.</p>
                 </div>
@@ -173,7 +172,6 @@ export default function Page() {
                                         <td className="py-4 text-sm text-slate-500 max-w-[160px] truncate">
                                             {issue.location}
                                         </td>
-                                        {/* ↓ extra column for admin */}
                                         <td className="py-4 text-sm text-slate-600">
                                             {issue.reportedBy?.fullname}
                                         </td>
